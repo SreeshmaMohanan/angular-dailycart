@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div style="margin-top: 80px;">
+  <header>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="500px" src="https://marketplace.canva.com/EAFED4mfw94/1/0/1600w/canva-yellow-white-modern-special-discount-banner-0J53SvmhoiY.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img  height="500px" src="https://static.vecteezy.com/system/resources/thumbnails/004/299/835/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img height="500px" src="https://media.wired.com/photos/5c9040ee4950d24718d6da99/16:9/w_2400,h_1350,c_limit/shoppingcart-1066110386.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</header>
+    <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of allProducts">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img height="250px" routerLink="view/{{product.id}}" class="card-img-top" [src]="product.image" alt="product" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 style="height: 50px;" class="fw-bolder">{{product.title.slice(0,20)}}...</h5>
+                            <!-- Product price-->
+                           $ {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="d-flex justify-content-between">
+                          <button (click)="addtoWishlist(product)" class="btn"><i style="height: 40px;" class="fa-solid fa-heart text-danger fa-2x"></i></button>
+                          <button (click)="addtoCart(product)" class="btn"><i  style="height: 40px;" class="fa-solid fa-cart-plus text-success fa-2x"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+</div>

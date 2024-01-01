@@ -1,0 +1,40 @@
+
+<app-header></app-header>
+<div style="margin-top: 80px;">
+<div *ngIf="allProducts.length===0" class="empty-whishlist mb-5 d-flex justify-content-center align-items-center w-100 flex-column">
+    <img src="https://2.bp.blogspot.com/-QfSOClZc8r0/XNr6srFlzjI/AAAAAAAAGlA/lzs505eFFiEdyAytzKkMabdUTihKywcqwCLcBGAs/s1600/EXAM360%2B-%2BNo%2BWishlist.png" alt="empty-whishlist">
+    <h2 class="text-danger" style="height: 50px;">Your wishlist is empty</h2>
+    <button routerLink="" class="btn btn-success">Add more Items</button>
+</div>
+<div *ngIf="allProducts.length>0" class="wishlist">
+    
+    <div class="container px-4 px-lg-5 mt-5">
+        <h1 style="height: 65px;">Your Wishlist</h1>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of allProducts">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img height="200px" routerLink="view/{{product.id}}" class="card-img-top" [src]="product.image" alt="product" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 style="height: 40px;" class="fw-bolder">{{product.title.slice(0,20)}}...</h5>
+                            <!-- Product price-->
+                            ${{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="d-flex justify-content-between">
+                          <button (click)="removeItem(product._id)" class="btn"><i style="overflow-y: hidden;" class="fa-sharp fa-solid fa-heart-circle-minus text-danger fa-2x"></i></button>
+                          <button (click)="addtoCart(product)" class="btn"><i  style="height: 40px;" class="fa-solid fa-cart-plus text-success fa-2x"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
